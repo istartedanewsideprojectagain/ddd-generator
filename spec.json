@@ -1,0 +1,49 @@
+{
+   "itemName": "Patate",
+   "basePackage": "live.istartedanewsideprojectagain",
+   "commands": [
+       {
+           "name": "Create",
+           "fields": [
+               {
+                "name": "name",
+                "type": "String"
+               }
+           ]
+       }
+   ],
+   "dtos" : [
+        {
+            "name": "Info",
+            "fields": [
+                {
+                    "name": "name",
+                    "type": "String"
+                   }
+            ]
+    
+        }
+   ],
+   "entity": {
+    "fields": [
+        {
+         "name": "name",
+         "type": "String"
+        }
+    ]
+   },
+   "model": {
+    "fields": [
+        {
+         "name": "name",
+         "type": "String"
+        }
+    ]
+   },
+   "endpoints" : [
+        {
+            "name": "create",
+            "command": "$ref/commands/CreateCommand"
+        }
+   ]
+}

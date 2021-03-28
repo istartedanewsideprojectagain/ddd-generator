@@ -1,0 +1,17 @@
+{
+  "name": "ddd-generator",
+  "version": "0.0.0",
+  "description": "A package generator for the ddd template",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "fs-extra": "^9.1.0",
+    "pluralize": "^8.0.0",
+    "twig": "^1.15.4"
+  }
+}
