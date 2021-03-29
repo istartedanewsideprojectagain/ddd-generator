@@ -1,11 +1,11 @@
-package {{ basePackage }}.application.{{ item }};
+package {{ basePackage }}.application.{{ typeName }}.dto;
 
-import {{ basePackage }}.domain.{{ item }}.{{ name }};
+import {{ basePackage }}.domain.{{ typeName }}.{{ type }};
 import org.springframework.stereotype.Service;
 
 @Service
-public class {{ name }}{{ dtoName }}Mapper {
-    public {{ name }}{{ dtoName }} fromDomain({{ name }} {{ item }}){
-        return new {{ name }}{{ dtoName }}({{ item }});
+public class {{ dtoMapperType }} {
+    public {{ dtoMapperType }} fromDomain({{ type }} {{ typeName }}){
+        return new {{ dtoMapperType }}({{ item }});
     }
 }
