@@ -42,8 +42,7 @@
    },
    "endpoints" : [
         {
-            "name": "create",
-            "command": "$ref/commands/CreateCommand"
+            "name": "Create"
         }
    ]
 }

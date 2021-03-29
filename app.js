@@ -80,6 +80,24 @@ const generateCommandMapper = (basePackage, commandType, type, fields) => {
     });
 }
 
+const generateEndpoint = (basePackage,type,endpoints) => {
+    const typeName = type.toLowerCase();
+    const typeNamePlural = pluralize(typeName);
+    const variables = {
+        basePackage,
+        type,
+        typeName,
+        endpoints,
+        typeNamePlural,
+    }
+
+    const outputFolder = `ui/rest/${typeName}`;
+    Twig.renderFile(`${boilerPlatePath}/ui/rest/endpoint.java`, variables,(err, output) => {
+        if(err) console.error(err)
+        writeGeneratedFile(outputFolder,`${type}Endpoint.java`,output);
+    });
+
+}
 const generatePOJO = (basePackage,name,additionalData,filePath) => {
     const variables = {
         basePackage: basePackage,
@@ -133,7 +151,6 @@ const generateDtos = (spec) => {
     });
 }
 
-
 const main = async () => {
 
 
@@ -156,6 +173,8 @@ const main = async () => {
     generatePOJO(spec.basePackage,spec.type,spec.entity,`domain/entity.java`);
     generatePOJO(spec.basePackage,spec.type,spec.entity,`domain/id.java`);
     generatePOJO(spec.basePackage,spec.type,spec.entity,`domain/repository.java`);
+
+    generateEndpoint(spec.basePackage,spec.type,spec.endpoints);
 
 
 
