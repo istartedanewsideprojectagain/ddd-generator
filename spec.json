@@ -1,12 +1,16 @@
 {
-   "type": "Patate",
+   "type": "Account",
    "basePackage": "live.istartedanewsideprojectagain",
    "commands": [
        {
            "name": "Create",
            "fields": [
                {
-                "name": "name",
+                "name": "username",
+                "type": "String"
+               },
+               {
+                "name": "password",
                 "type": "String"
                }
            ]
@@ -17,9 +21,13 @@
             "name": "Info",
             "fields": [
                 {
-                    "name": "name",
+                    "name": "id",
+                    "type": "long"
+                },
+                {
+                    "name": "username",
                     "type": "String"
-                   }
+                }
             ]
 
         }
@@ -27,16 +35,28 @@
    "entity": {
     "fields": [
         {
-         "name": "name",
+            "name": "id",
+            "type": "AccountId"
+        },
+        {
+         "name": "username",
          "type": "String"
+        },
+        {
+            "name": "password",
+            "type": "String"
         }
     ]
    },
    "model": {
     "fields": [
         {
-         "name": "name",
+         "name": "username",
          "type": "String"
+        },
+        {
+            "name": "password",
+            "type": "String"
         }
     ]
    },

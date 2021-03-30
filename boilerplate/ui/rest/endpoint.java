@@ -3,7 +3,7 @@ package {{ basePackage }}.ui.rest.{{ typeName }};
 import {{ basePackage }}.application.{{ typeName }}.{{ type }}Facade;
 
     {% for endpoint in endpoints %}
-import {{ basePackage }}.application.{{ typeName }}.create.{{ type }}{{ endpoint.name }}Command;
+import {{ basePackage }}.application.{{ typeName }}.command.{{ type }}{{ endpoint.name }}Command;
     {% endfor %}
 
 import lombok.AllArgsConstructor;

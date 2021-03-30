@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class {{ dtoMapperType }} {
-    public {{ dtoMapperType }} fromDomain({{ type }} {{ typeName }}){
-        return new {{ dtoMapperType }}({{ item }});
+    public {{ dtoType }} fromDomain({{ type }} {{ typeName }}){
+        return new {{ dtoType }}({{ item }});
     }
 }

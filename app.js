@@ -42,7 +42,7 @@ const generateDTOMapper = (basePackage, dtoType, type, fields) => {
     const outputFolder = `application/${typeName}/dto`;
     Twig.renderFile(`${boilerPlatePath}/application/dtoMapper.java`, variables,(err, output) => {
         if(err) console.error(err)
-        writeGeneratedFile(outputFolder,`${dtoType}DTOMapper.java`,output);
+        writeGeneratedFile(outputFolder,`${dtoType}Mapper.java`,output);
     });
 }
 
@@ -98,6 +98,24 @@ const generateEndpoint = (basePackage,type,endpoints) => {
     });
 
 }
+
+const generateFacade = (basePackage,type,commands,dtos) => {
+    const typeName = type.toLowerCase();
+    const variables = {
+        basePackage,
+        type,
+        typeName,
+        commands,
+        dtos,
+    }
+
+    const outputFolder = `application/${typeName}`;
+    Twig.renderFile(`${boilerPlatePath}/application/facade.java`, variables,(err, output) => {
+        if(err) console.error(err)
+        writeGeneratedFile(outputFolder,`${type}Facade.java`,output);
+    });
+
+}
 const generatePOJO = (basePackage,name,additionalData,filePath) => {
     const variables = {
         basePackage: basePackage,
@@ -117,7 +135,7 @@ const generatePOJO = (basePackage,name,additionalData,filePath) => {
     } else if(variables.dtoName !== undefined){
         filename = name + variables.dtoName.charAt(0).toUpperCase() + variables.dtoName.slice(1) + filename
     } else if(fileType === 'Entity'){
-        filename = filename;
+        filename = name+".java";
     } else if(fileType === 'Command' && variables.commandName === undefined){
         filename = name + variables.name +filename;
     }else if(fileType === 'Dto' && variables.dtoName === undefined){
@@ -160,8 +178,10 @@ const main = async () => {
     generateCommands(spec);
     generateDtos(spec);
 
+    generateFacade(spec.basePackage,spec.type,spec.commands,spec.dtos);
 
-    generatePOJO(spec.basePackage,spec.type,spec.model, `application/facade.java`);
+
+    //generatePOJO(spec.basePackage,spec.type,spec.model, `application/facade.java`);
 
 
 
